@@ -1,0 +1,25 @@
+Package: bayesmeta
+Title: Bayesian Random-Effects Meta-Analysis for IPD (Logistic)
+Version: 0.1.0
+Authors@R: person("Yuan", "Zhou", email = "yuanzhouu@users.noreply.github.com", role = c("aut", "cre"))
+Description: Fits a Bayesian hierarchical random-effects meta-analysis model
+    using individual participant data (IPD) with a logistic observation model.
+    Default settings reproduce the Simulation Study 2 Benchmark results from
+    Kim et al. (Bayesian-Meta supplementary materials).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends:
+    R (>= 4.1.0)
+Imports:
+    mvtnorm,
+    MCMCpack,
+    stats,
+    utils
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/yuanzhouu/bayesmeta
+BugReports: https://github.com/yuanzhouu/bayesmeta/issues

@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^\.Rhistory$
+^\.RData$
+^\.Rcheck$
+^bayesmeta\.Rcheck$
+^bayesmeta.*\.tar\.gz$
+^bayesmeta.*\.tgz$
