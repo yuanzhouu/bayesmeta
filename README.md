@@ -15,8 +15,8 @@
 #
 #   library(bayesmeta)
 #
-#   # Defaults match the official Benchmark script
-#   # (SimulationData_2, rep_no=1, seed=1001, burnin=mainrun=10000)
+# Defaults match the official Benchmark script, including the RNG state after
+# load(SimulationData_2.RData) (that file was saved with save.image()).
 #   fit <- fit_ipd()
 #   colMeans(fit$posterior_mu)
 #

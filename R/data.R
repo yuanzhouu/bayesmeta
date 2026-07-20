@@ -11,6 +11,8 @@
 #'   \item{theta_l_mat}{Numeric matrix `L x p` of true study-specific coefficients
 #'     (also used as MCMC starting values in the official script).}
 #'   \item{true_mu}{Numeric vector of length `p`, the true random-effects mean.}
+#'   \item{random_seed}{`.Random.seed` from `SimulationData_2.RData` (via
+#'     `save.image()`), used to match the official Benchmark RNG stream.}
 #' }
 #'
 #' @source Extracted from `SimulationData_2.RData` in

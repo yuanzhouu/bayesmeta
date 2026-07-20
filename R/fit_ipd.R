@@ -24,7 +24,11 @@
 #' @param nu0 Inverse-Wishart degrees of freedom. Default `0.1`.
 #' @param phi0 Inverse-Wishart scale multiplier (`Phi0 = phi0 * I`). Default `0.1`.
 #' @param seed Integer RNG seed. Default `1001` (= `rep_no + 1000` with `rep_no = 1`
-#'   in the official script). Set to `NULL` to leave the RNG state unchanged.
+#'   in the official script). With the default bundled data, `seed = 1001` restores
+#'   the `.Random.seed` that the official script obtains after
+#'   `load(SimulationData_2.RData)` (that file was written with `save.image()`,
+#'   so `load()` overwrites `set.seed(1001)`). Set to `NULL` to leave the RNG
+#'   state unchanged. Any other integer calls `set.seed(seed)`.
 #' @param verbose Logical; print progress every 1000 iterations.
 #'
 #' @return A list of class `bayesmeta_ipd` with components:
@@ -62,6 +66,7 @@ fit_ipd <- function(X = NULL,
                     seed = 1001L,
                     verbose = TRUE) {
   using_default_data <- is.null(X) && is.null(Y)
+  bundled_random_seed <- NULL
 
   if (using_default_data) {
     # Prefer namespace lazy-data; fall back to bundled extdata file.
@@ -89,6 +94,9 @@ fit_ipd <- function(X = NULL,
     Y <- sim2_rep1$Y_mat
     if (is.null(theta_init)) theta_init <- sim2_rep1$theta_l_mat
     if (is.null(mu_init)) mu_init <- sim2_rep1$true_mu
+    if (!is.null(sim2_rep1$random_seed)) {
+      bundled_random_seed <- sim2_rep1$random_seed
+    }
   } else {
     if (is.null(X) || is.null(Y)) {
       stop("Provide both `X` and `Y`, or leave both NULL to use sim2_rep1.", call. = FALSE)
@@ -142,7 +150,15 @@ fit_ipd <- function(X = NULL,
   }
 
   if (!is.null(seed)) {
-    set.seed(as.integer(seed))
+    seed <- as.integer(seed)
+    # Official Benchmark.R does set.seed(1001) then load(SimulationData_2.RData).
+    # That .RData was written with save.image(), so load() restores .Random.seed
+    # and overwrites set.seed(1001). Match that RNG state for default data + seed.
+    if (using_default_data && identical(seed, 1001L) && !is.null(bundled_random_seed)) {
+      assign(".Random.seed", bundled_random_seed, envir = .GlobalEnv)
+    } else {
+      set.seed(seed)
+    }
   }
 
   invLambda_theta <- diag(1 / lambda, p_theta)

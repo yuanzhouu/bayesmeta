@@ -17,6 +17,9 @@ A list with components:
   \item{theta_l_mat}{Numeric matrix \code{L x p} of true study-specific
     coefficients (also used as MCMC starting values in the official script).}
   \item{true_mu}{Numeric vector of length \code{p}, the true random-effects mean.}
+  \item{random_seed}{Integer vector: the \code{.Random.seed} restored by
+    \code{load(SimulationData_2.RData)} in the official Benchmark script
+    (needed to reproduce official posterior draws).}
 }
 }
 \source{

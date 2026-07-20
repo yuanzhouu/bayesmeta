@@ -57,8 +57,10 @@ Default \code{0.15}.}
 \item{phi0}{Inverse-Wishart scale multiplier (\code{Phi0 = phi0 * I}).
 Default \code{0.1}.}
 
-\item{seed}{Integer RNG seed. Default \code{1001}. Set to \code{NULL} to
-leave the RNG state unchanged.}
+\item{seed}{Integer RNG seed. Default \code{1001}. With default bundled data,
+\code{seed = 1001} restores the official \code{.Random.seed} from
+\code{SimulationData_2.RData}. Set to \code{NULL} to leave the RNG state
+unchanged.}
 
 \item{verbose}{Logical; print progress every 1000 iterations.}
 }
