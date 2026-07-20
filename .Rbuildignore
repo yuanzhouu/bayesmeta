@@ -5,6 +5,6 @@
 ^\.Rhistory$
 ^\.RData$
 ^\.Rcheck$
-^bayesmeta\.Rcheck$
-^bayesmeta.*\.tar\.gz$
-^bayesmeta.*\.tgz$
+^bayesmetaipd\.Rcheck$
+^bayesmetaipd.*\.tar\.gz$
+^bayesmetaipd.*\.tgz$

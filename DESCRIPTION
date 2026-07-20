@@ -1,6 +1,6 @@
-Package: bayesmeta
+﻿Package: bayesmetaipd
 Title: Bayesian Random-Effects Meta-Analysis for IPD (Logistic)
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Yuan", "Zhou", email = "yuanzhouu@users.noreply.github.com", role = c("aut", "cre"))
 Description: Fits a Bayesian hierarchical random-effects meta-analysis model
     using individual participant data (IPD) with a logistic observation model.

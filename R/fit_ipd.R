@@ -1,4 +1,4 @@
-#' Fit IPD-only Bayesian random-effects meta-analysis (logistic)
+﻿#' Fit IPD-only Bayesian random-effects meta-analysis (logistic)
 #'
 #' Implements the Simulation Study 2 Benchmark sampler: all studies are treated
 #' as individual participant data (IPD), with a logistic observation model and
@@ -31,7 +31,7 @@
 #'   state unchanged. Any other integer calls `set.seed(seed)`.
 #' @param verbose Logical; print progress every 1000 iterations.
 #'
-#' @return A list of class `bayesmeta_ipd` with components:
+#' @return A list of class `bayesmetaipd_fit` with components:
 #' \describe{
 #'   \item{posterior_mu}{`mainrun x p` matrix of posterior draws of `mu`.}
 #'   \item{posterior_Sigma_diag}{`mainrun x p` matrix of posterior draws of
@@ -71,18 +71,18 @@ fit_ipd <- function(X = NULL,
   if (using_default_data) {
     # Prefer namespace lazy-data; fall back to bundled extdata file.
     sim2_rep1 <- NULL
-    if (exists("sim2_rep1", envir = asNamespace("bayesmeta"), inherits = FALSE)) {
-      sim2_rep1 <- get("sim2_rep1", envir = asNamespace("bayesmeta"), inherits = FALSE)
+    if (exists("sim2_rep1", envir = asNamespace("bayesmetaipd"), inherits = FALSE)) {
+      sim2_rep1 <- get("sim2_rep1", envir = asNamespace("bayesmetaipd"), inherits = FALSE)
     }
     if (is.null(sim2_rep1)) {
       env <- new.env(parent = emptyenv())
-      utils::data("sim2_rep1", package = "bayesmeta", envir = env)
+      utils::data("sim2_rep1", package = "bayesmetaipd", envir = env)
       if (exists("sim2_rep1", envir = env, inherits = FALSE)) {
         sim2_rep1 <- env$sim2_rep1
       }
     }
     if (is.null(sim2_rep1)) {
-      path <- system.file("extdata", "sim2_rep1.rda", package = "bayesmeta", mustWork = FALSE)
+      path <- system.file("extdata", "sim2_rep1.rda", package = "bayesmetaipd", mustWork = FALSE)
       if (!nzchar(path) || !file.exists(path)) {
         stop("Could not load bundled dataset sim2_rep1.", call. = FALSE)
       }
@@ -261,7 +261,7 @@ fit_ipd <- function(X = NULL,
       used_default_data = using_default_data
     )
   )
-  class(out) <- c("bayesmeta_ipd", "list")
+  class(out) <- c("bayesmetaipd_fit", "list")
   out
 }
 
@@ -275,7 +275,7 @@ fit_ipd <- function(X = NULL,
 #' @param compare_official If `TRUE`, also load bundled official draws and
 #'   report `all.equal` comparisons.
 #'
-#' @return A `bayesmeta_ipd` fit object. If `compare_official = TRUE`, an
+#' @return A `bayesmetaipd_fit` fit object. If `compare_official = TRUE`, an
 #'   attribute `comparison` is attached with equality checks.
 #'
 #' @examples
@@ -291,7 +291,7 @@ reproduce_sim2_benchmark <- function(..., compare_official = FALSE) {
   if (isTRUE(compare_official)) {
     official_path <- system.file(
       "extdata", "official_sim2_benchmark_rep1.RData",
-      package = "bayesmeta"
+      package = "bayesmetaipd"
     )
     if (!nzchar(official_path) || !file.exists(official_path)) {
       warning("Official reference file not found in the installed package.", call. = FALSE)
@@ -324,7 +324,7 @@ reproduce_sim2_benchmark <- function(..., compare_official = FALSE) {
 
 
 #' @export
-print.bayesmeta_ipd <- function(x, ...) {
+print.bayesmetaipd_fit <- function(x, ...) {
   cat("Bayesian IPD random-effects meta-analysis (logistic)\n")
   cat(sprintf(
     "  Draws: %d (after burn-in %d)\n",

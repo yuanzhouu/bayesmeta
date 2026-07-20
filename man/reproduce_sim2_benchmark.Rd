@@ -1,4 +1,4 @@
-\name{reproduce_sim2_benchmark}
+﻿\name{reproduce_sim2_benchmark}
 \alias{reproduce_sim2_benchmark}
 \title{Reproduce official Simulation 2 Benchmark (rep_1) draws}
 \description{
@@ -16,7 +16,7 @@ reproduce_sim2_benchmark(..., compare_official = FALSE)
 report \code{all.equal} comparisons.}
 }
 \value{
-A \code{bayesmeta_ipd} fit object. If \code{compare_official = TRUE}, an
+A \code{bayesmetaipd_fit} fit object. If \code{compare_official = TRUE}, an
 attribute \code{comparison} is attached with equality checks.
 }
 \examples{

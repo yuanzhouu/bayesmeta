@@ -1,6 +1,6 @@
 export(fit_ipd)
 export(reproduce_sim2_benchmark)
-S3method(print, bayesmeta_ipd)
+S3method(print, bayesmetaipd_fit)
 importFrom(MCMCpack, riwish)
 importFrom(mvtnorm, dmvnorm)
 importFrom(mvtnorm, rmvnorm)

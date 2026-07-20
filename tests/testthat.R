@@ -1,4 +1,4 @@
-library(testthat)
-library(bayesmeta)
+﻿library(testthat)
+library(bayesmetaipd)
 
-test_check("bayesmeta")
+test_check("bayesmetaipd")

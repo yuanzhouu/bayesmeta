@@ -1,4 +1,4 @@
-# bayesmeta
+﻿# bayesmetaipd
 #
 # Bayesian random-effects meta-analysis using individual participant data (IPD).
 # Default settings of fit_ipd() reproduce the Simulation Study 2 Benchmark
@@ -13,10 +13,9 @@
 # Quick start
 # -----------
 #
-#   library(bayesmeta)
+#   library(bayesmetaipd)
 #
-# Defaults match the official Benchmark script, including the RNG state after
-# load(SimulationData_2.RData) (that file was saved with save.image()).
+#   # Defaults match the official Benchmark (data + RNG stream)
 #   fit <- fit_ipd()
 #   colMeans(fit$posterior_mu)
 #
@@ -47,11 +46,16 @@
 #
 # MCMC: Metropolis-Hastings for each theta_l, then Gibbs for (mu, Sigma).
 #
-# Note on the package name
-# ------------------------
+# Why default seed matches the official script
+# --------------------------------------------
 #
-# There is an unrelated CRAN package also named `bayesmeta`. Installing this
-# GitHub package will mask / replace that package name in your library. If you
-# need both, install this package into a separate library path.
+# Official code does:
+#   set.seed(1001)
+#   load("SimulationData_2.RData")   # created by save.image()
+#
+# save.image() also stores .Random.seed. So load() overwrites the seed from
+# set.seed(1001). The MCMC actually starts from that saved RNG state, not from
+# a fresh set.seed(1001). This package restores that state when seed = 1001
+# and the bundled sim2_rep1 data are used.
 #
 # License: MIT

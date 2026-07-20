@@ -1,4 +1,4 @@
-\name{fit_ipd}
+﻿\name{fit_ipd}
 \alias{fit_ipd}
 \title{Fit IPD-only Bayesian random-effects meta-analysis (logistic)}
 \description{
@@ -65,7 +65,7 @@ unchanged.}
 \item{verbose}{Logical; print progress every 1000 iterations.}
 }
 \value{
-A list of class \code{bayesmeta_ipd} with \code{posterior_mu},
+A list of class \code{bayesmetaipd_fit} with \code{posterior_mu},
 \code{posterior_Sigma_diag}, \code{call}, and \code{settings}.
 }
 \examples{
