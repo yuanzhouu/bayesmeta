@@ -1,4 +1,4 @@
-﻿Package: bayesmetaipd
+Package: bayesmetaipd
 Title: Bayesian Random-Effects Meta-Analysis for IPD (Logistic)
 Version: 0.1.1
 Authors@R: person("Yuan", "Zhou", email = "yuanzhouu@users.noreply.github.com", role = c("aut", "cre"))
